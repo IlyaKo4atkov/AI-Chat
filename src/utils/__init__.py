@@ -1,6 +1,6 @@
 """
-Utils package initialization.
-Contains utility modules for the application.
+Инициализация пакета Utils.
+Содержит служебные модули для приложения.
 """
 from .analytics import Analytics
 from .cache import ChatCache
