@@ -1,24 +1,24 @@
-# Импортируем необходимые стандартные библиотеки Python
-import os  # Для работы с операционной системой
-import sys  # Для доступа к системным параметрам и функциям
-import shutil  # Для операций с файлами и директориями
-import subprocess  # Для запуска внешних процессов
-from pathlib import Path  # Для удобной работы с путями файловой системы
+# Импорт необходимых стандартных библиотек Python
+import os  # Библиотека длоя работы с операционной системой
+import sys  # Библиотека для доступа к системным параметрам и функциям
+import shutil  # Библиотека для операций с файлами и директориями
+import subprocess  # Библиотека для запуска внешних процессов
+from pathlib import Path  # Библиотека для работы с путями файловой системы
 
 def build_windows():
     """Сборка исполняемого файла для Windows с помощью PyInstaller"""
     print("Building Windows executable...")
     
-    # Устанавливаем зависимости проекта для Windows из файла requirements.txt
+    # Установка зависимостей проекта для Windows из файла requirements.txt
     # sys.executable - путь к текущему интерпретатору Python
     subprocess.run([sys.executable, "-m", "pip", "install", "-r", "requirements.txt"])
     
-    # Создаём директорию bin, если она не существует
+    # Создание директории bin, если она не существует
     # exist_ok=True позволяет не выбрасывать ошибку, если директория уже существует
     bin_dir = Path("bin")
     bin_dir.mkdir(exist_ok=True)
     
-    # Запускаем PyInstaller со следующими параметрами:
+    # Запуск PyInstaller со следующими параметрами:
     # --onefile: создать один исполняемый файл
     # --windowed: запускать без консольного окна
     # --name: задать имя выходного файла
@@ -36,7 +36,7 @@ def build_windows():
         "src/main.py"
     ])
     
-    # Перемещаем собранный файл в директорию bin
+    # Перемещение собранного файла в директорию bin
     # Используем try/except для обработки возможных ошибок при перемещении
     try:
         shutil.move("dist/AI Chat.exe", "bin/AIChat.exe")
@@ -48,14 +48,14 @@ def build_linux():
     """Сборка исполняемого файла для Linux с помощью PyInstaller"""
     print("Building Linux executable...")
     
-    # Устанавливаем зависимости проекта для Linux
+    # Установка зависимости проекта для Linux
     subprocess.run([sys.executable, "-m", "pip", "install", "-r", "requirements.txt"])
     
-    # Создаём директорию bin, если она не существует
+    # Создание директории bin, если она не существует
     bin_dir = Path("bin")
     bin_dir.mkdir(exist_ok=True)
     
-    # Запускаем PyInstaller для Linux со следующими параметрами:
+    # Запуск PyInstaller для Linux со следующими параметрами:
     # --onefile: создать один исполняемый файл
     # --windowed: запускать без консольного окна
     # --icon: указать иконку приложения
@@ -69,7 +69,7 @@ def build_linux():
         "src/main.py"
     ])
     
-    # Перемещаем собранный файл в директорию bin
+    # Перемещение собранного файла в директорию bin
     try:
         shutil.move("dist/aichat", "bin/aichat")
         print("Linux build completed! Executable location: bin/aichat")
@@ -81,7 +81,7 @@ def main():
     
     Определяет операционную систему и запускает соответствующую функцию сборки
     """
-    # Проверяем тип операционной системы
+    # Проверка типа операционной системы
     if sys.platform.startswith('win'):  # Если Windows
         build_windows()
     elif sys.platform.startswith('linux'):  # Если Linux
@@ -89,8 +89,6 @@ def main():
     else:  # Если другая ОС
         print("Unsupported platform")
 
-# Точка входа в скрипт
-# Если скрипт запущен напрямую (не импортирован как модуль),
-# то запускаем основную функцию
+# Запуск функции
 if __name__ == "__main__":
     main()
