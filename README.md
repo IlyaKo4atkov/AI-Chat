@@ -7,15 +7,15 @@
 ### Установка и настройка
 
 1. **Установка необходимого ПО**
-   - Установите [Git](https://git-scm.com/downloads)
-   - Установите [Python 3.9+](https://www.python.org/downloads/)
-   - Установите [Visual Studio Code](https://code.visualstudio.com/download)
+   - Установка [Git](https://git-scm.com/downloads)
+   - Установка [Python 3.9+](https://www.python.org/downloads/)
+   - Установка [Visual Studio Code](https://code.visualstudio.com/download)
 
 2. **Клонирование проекта**
    ```bash
-   # Клонируйте репозиторий
+   # Клонирование репозитория
    git clone https://github.com/neuro-fill/51-lesson.git
-   # Перейдите в директорию проекта
+   # Переход в директорию проекта
    cd 51-lesson
    ```
 
